@@ -1,0 +1,49 @@
+<html>
+  <head>
+    <link rel="icon" href="icon.png">
+    <title>Paw Pal | Pet Entry</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="stylesheet.css">
+  </head>
+  <script>
+    function displayTable() {
+      // Call the PHP script to retrieve data from the database
+      var xhr = new XMLHttpRequest();
+      xhr.open("GET", "display_table.php", true);
+      xhr.onload = function() {
+        if (this.status == 200) {
+          document.getElementById("table-content").innerHTML = this.responseText;
+        }
+      };
+      xhr.send();
+    }
+    function editTable() {
+      // Call the PHP script to retrieve data from the database
+      var xhr = new XMLHttpRequest();
+      xhr.open("GET", "editForm.php", true);
+      xhr.onload = function() {
+        if (this.status == 200) {
+          document.getElementById("edit-content").innerHTML = this.responseText;
+        }
+      };
+      xhr.send();
+    }
+    
+  </script>
+
+  <body onload="displayTable()">
+   <nav class="sidenav">
+		<ul>
+			<li><a href="index.html">Home</a></li>
+			<li><a href="dataentry.html">Pet Entry</a></li>
+			<li><a href="tableview.html">Feeding History</a></li>
+		</ul>
+	</nav>
+    
+    
+    
+    <div id="table-content"></div>
+    <button onclick="editTable()">Edit Pets</button>
+    <div id="edit-content"></div>
+  </body>
+  </html>

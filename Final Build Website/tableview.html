@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="icon" href="icon.png">
+    <title>Pet Pal | History</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="stylesheet.css">
+    <script>
+			function displayHistory() {
+				// Call the PHP script to retrieve data from the database
+				var xhr = new XMLHttpRequest();
+				xhr.open("GET", "history.php", true);
+				xhr.onload = function() {
+					if (this.status == 200) {
+						document.getElementById("historyTable").innerHTML = this.responseText;
+					}
+				};
+				xhr.send();
+			}
+		</script>
+
+  </head>
+<body onload="displayHistory()">
+	<header>
+		<h1>Feeding Hisotry</h1>
+	</header>
+	
+	<nav class="sidenav">
+		<ul>
+			<li><a href="index.html">Home</a></li>
+			<li><a href="dataentry.html">Pet Entry</a></li>
+			<li><a href="tableview.html">Feeding History</a></li>
+		</ul>
+	</nav>
+	
+	<main>
+		<h2>Displayed below are the dates and total cups served that day for each pet!</h2>
+		<div id="historyTable"></div>
+
+		
+
+</body>
+</html>
+	</main>
+	
+	<footer>
+		<p>&copy; 2023 My Website</p>
+        Image by <a href="https://www.freepik.com/free-photo/beautiful-pet-portrait-dog_21249170.htm#query=pet&position=3&from_view=search&track=sph">Freepik</a>
+	</footer>
+</body>
+</html>
